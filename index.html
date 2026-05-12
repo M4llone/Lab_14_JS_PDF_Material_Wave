@@ -1,13 +1,65 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Резюме</title>
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <main class="resume">
+      <header class="resume__header">
+        <h1 class="resume__name" contenteditable="true">Иван Иванов</h1>
+        <p class="resume__title" contenteditable="true">Frontend-разработчик</p>
+        <div class="resume__contacts">
+          <span contenteditable="true">📧 ivan@example.com</span>
+          <span contenteditable="true">📱 +7 (999) 123-45-67</span>
+          <span contenteditable="true">📍 Москва, Россия</span>
+        </div>
+      </header>
+
+      <section class="resume__section">
+        <h2>О себе</h2>
+        <p contenteditable="true">
+          Опытный разработчик с 5-летним стажем. Специализируюсь на создании современных веб-приложений с использованием HTML, CSS и JavaScript.
+        </p>
+      </section>
+
+      <section class="resume__section">
+        <h2>Опыт работы</h2>
+        <div class="resume__item">
+          <h3 contenteditable="true">Старший разработчик</h3>
+          <p class="resume__date" contenteditable="true">2022 – настоящее время</p>
+          <p contenteditable="true">Компания "Технологии Будущего"</p>
+        </div>
+        <div class="resume__item">
+          <h3 contenteditable="true">Frontend-разработчик</h3>
+          <p class="resume__date" contenteditable="true">2020 – 2022</p>
+          <p contenteditable="true">Веб-студия "Креатив"</p>
+        </div>
+      </section>
+
+      <section class="resume__section">
+        <h2>Образование</h2>
+        <div class="resume__item">
+          <h3 contenteditable="true">МГУ им. Ломоносова</h3>
+          <p contenteditable="true">Факультет вычислительной математики и кибернетики, 2020</p>
+        </div>
+      </section>
+
+      <section class="resume__section">
+        <h2>Навыки</h2>
+        <ul class="resume__skills">
+          <li contenteditable="true">HTML5, CSS3, JavaScript (ES6+)</li>
+          <li contenteditable="true">React, Vue.js</li>
+          <li contenteditable="true">Node.js, Express</li>
+          <li contenteditable="true">Git, Webpack, Vite</li>
+        </ul>
+      </section>
+
+      <button class="resume__download-btn" id="downloadBtn">Скачать PDF</button>
+    </main>
+
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

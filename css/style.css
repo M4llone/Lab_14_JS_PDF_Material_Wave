@@ -1,96 +1,165 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  justify-content: center;
+  padding: 40px 20px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.resume {
+  background: #ffffff;
+  max-width: 800px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.resume__header {
   text-align: center;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+.resume__name {
+  font-size: 2.5em;
+  color: #2c3e50;
+  margin-bottom: 5px;
 }
 
-.card {
-  padding: 2em;
+.resume__title {
+  font-size: 1.3em;
+  color: #3498db;
+  margin-bottom: 15px;
 }
 
-.read-the-docs {
-  color: #888;
+.resume__contacts {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: #555;
+  font-size: 0.95em;
 }
 
-button {
+.resume__section {
+  margin-bottom: 25px;
+}
+
+.resume__section h2 {
+  color: #2c3e50;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  font-size: 1.4em;
+}
+
+.resume__item {
+  margin-bottom: 15px;
+}
+
+.resume__item h3 {
+  color: #34495e;
+  font-size: 1.1em;
+}
+
+.resume__date {
+  color: #7f8c8d;
+  font-size: 0.9em;
+  margin: 3px 0;
+}
+
+.resume__skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.resume__skills li {
+  background: #3498db;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9em;
+}
+
+.resume__download-btn {
+  display: block;
+  margin: 30px auto 0;
+  padding: 12px 35px;
+  background: #3498db;
+  color: #fff;
+  border: none;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-size: 1.1em;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background 0.3s, transform 0.2s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.resume__download-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Стили для редактируемых элементов */
+[contenteditable="true"] {
+  outline: none;
+  border-radius: 4px;
+  padding: 2px 4px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+[contenteditable="true"]:hover {
+  background: #f5f6fa;
+}
+
+[contenteditable="true"]:focus {
+  background: #eef2ff;
+  box-shadow: 0 0 0 2px #3498db;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .resume {
+    padding: 20px;
   }
-  a:hover {
-    color: #747bff;
+  .resume__name {
+    font-size: 1.8em;
   }
-  button {
-    background-color: #f9f9f9;
+  .resume__contacts {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+/* Material Wave (Ripple) */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(52, 152, 219, 0.4);
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
   }
 }
