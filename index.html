@@ -1,65 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Резюме</title>
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <main class="resume">
-      <header class="resume__header">
-        <h1 class="resume__name" contenteditable="true">Иван Иванов</h1>
-        <p class="resume__title" contenteditable="true">Frontend-разработчик</p>
-        <div class="resume__contacts">
-          <span contenteditable="true">📧 ivan@example.com</span>
-          <span contenteditable="true">📱 +7 (999) 123-45-67</span>
-          <span contenteditable="true">📍 Москва, Россия</span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алексей Морозов - Резюме</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="controls no-print">
+        <button id="download-btn" class="ripple">Скачать PDF</button>
+    </div>
+
+    <div class="resume-container" id="resume">
+        <!-- Левая колонка -->
+        <div class="column">
+            <!-- Профиль -->
+            <header class="card profile-card ripple">
+                <div class="photo-wrapper">
+                    <img src="images/1.jpg" id="profile-img" alt="Profile">
+                </div>
+                <div class="intro">
+                    <p>Привет 👋 Я</p>
+                    <h1 contenteditable="true" data-id="name">Амир Мгоян</h1>
+                    <h2 contenteditable="true" data-id="job">Fullstack-езид-разработчик</h2>
+                </div>
+            </header>
+
+            <!-- Опыт работы (перемещён вверх) -->
+            <section class="card experience ripple">
+                <h3 class="section-title">Опыт работы</h3>
+                <div class="exp-item highlight" contenteditable="true" data-id="exp1">
+                    <span class="date">Янв. 2023 - Наст. время <small>текущее</small></span>
+                    <h4>Senior Fullstack Developer</h4>
+                    <p class="company">TechVision | Полный день</p>
+                    <ul class="desc">
+                        <li>Разработка микросервисной архитектуры на Node.js и React.</li>
+                        <li>Наставничество команды из 5 разработчиков.</li>
+                    </ul>
+                </div>
+                <div class="exp-item" contenteditable="true" data-id="exp2">
+                    <span class="date">Март 2021 - Дек. 2022</span>
+                    <h4>Frontend-разработчик</h4>
+                    <p class="company">Digital Solutions | Удалённо</p>
+                    <ul class="desc">
+                        <li>Создание SPA на Vue.js и TypeScript.</li>
+                        <li>Оптимизация производительности веб-приложений.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Образование -->
+            <section class="card education ripple">
+                <h3 class="section-title">Образование</h3>
+                <div class="education-grid">
+                  <div class="edu-item accent-block" contenteditable="true" data-id="edu1">
+                      <span class="year">2024 🎓</span>
+                      <h4>Магистр Computer Science</h4>
+                      <p class="hashtags">#AI #MachineLearning #Python #Research #BigData</p>
+                      <span class="place">МГУ им. Ломоносова</span>
+                  </div>
+                  <div class="edu-item" contenteditable="true" data-id="edu2">
+                      <span class="year">2022</span>
+                      <h4>Backend-разработка</h4>
+                      <p class="hashtags">#NodeJS #PostgreSQL #Docker #REST</p>
+                      <span class="place">Яндекс Практикум</span>
+                  </div>
+                  <div class="edu-item" contenteditable="true" data-id="edu3">
+                      <span class="year">2018-2022</span>
+                      <h4>Прикладная информатика</h4>
+                      <p class="hashtags">#Java #СУБД #Алгоритмы #Кибербезопасность</p>
+                      <span class="place">СПбПУ Петра Великого</span>
+                  </div>
+                </div>
+            </section>
         </div>
-      </header>
 
-      <section class="resume__section">
-        <h2>О себе</h2>
-        <p contenteditable="true">
-          Опытный разработчик с 5-летним стажем. Специализируюсь на создании современных веб-приложений с использованием HTML, CSS и JavaScript.
-        </p>
-      </section>
+        <!-- Правая колонка -->
+        <div class="column">
+            <!-- Контакты -->
+            <section class="card contact-dark ripple" contenteditable="true" data-id="contacts">
+                <p>Буду рад сотрудничеству! Готов к интересным проектам</p>
+                <div class="contact-line">amirkatop.777@mail.ru | +7 977 777 77 67</div>
+            </section>
 
-      <section class="resume__section">
-        <h2>Опыт работы</h2>
-        <div class="resume__item">
-          <h3 contenteditable="true">Старший разработчик</h3>
-          <p class="resume__date" contenteditable="true">2022 – настоящее время</p>
-          <p contenteditable="true">Компания "Технологии Будущего"</p>
+            <!-- Навыки (бывшие Tools) -->
+            <section class="card tools ripple">
+                <h3 class="section-title">Навыки</h3>
+                <div class="tools-list">
+                    <div class="tool-group">
+                        <span class="tag-label" contenteditable="true" data-id="tool-label-1">frontend</span>
+                        <div class="icons-grid">
+                            <div class="icon-slot ripple">
+                                <img src="images/logoanalytics.svg" class="tool-img">
+                            </div>
+                            <div class="icon-slot ripple">
+                                <img src="images/logoChatGPT 1.svg" class="tool-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-group">
+                        <span class="tag-label" contenteditable="true" data-id="tool-label-2">backend</span>
+                        <div class="icons-grid">
+                            <div class="icon-slot ripple">
+                                <img src="images/logoCreativeCloud.svg" class="tool-img">
+                            </div>
+                            <div class="icon-slot ripple">
+                                <img src="images/logoMiro 1.svg" class="tool-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-group">
+                        <span class="tag-label" contenteditable="true" data-id="tool-label-3">инструменты</span>
+                        <div class="icons-grid">
+                            <div class="icon-slot ripple">
+                                <img src="images/logoMidjourney 1.svg" class="tool-img">
+                            </div>
+                            <div class="icon-slot ripple">
+                                <img src="images/logoCreativeCloud.svg" class="tool-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Языки -->
+            <section class="card languages ripple">
+              <h3 class="section-title">Языки</h3>
+              <div class="lang-row">
+                  <span contenteditable="true" data-id="lang-name-1">Русский (родной)</span>
+                  <div class="progress"><div class="bar" style="width: 100%;"></div></div>
+              </div>
+              <div class="lang-row">
+                  <span contenteditable="true" data-id="lang-name-2">English (C1)</span>
+                  <div class="progress"><div class="bar" style="width: 85%;"></div></div>
+              </div>
+              <div class="lang-row">
+                  <span contenteditable="true" data-id="lang-name-3">Армянский (второй родной)</span>
+                  <div class="progress"><div class="bar" style="width: 50%;"></div></div>
+              </div>
+          </section>
+
+            <!-- Интересы -->
+            <section class="card interests ripple">
+                <h3 class="section-title">Интересы</h3>
+                <div class="chips-container" contenteditable="true" data-id="interests">
+                    <span class="chip">opensource</span> <span class="chip">алгоритмы</span>
+                    <span class="chip">ux/ui</span> <span class="chip">кибербезопасность</span>
+                    <span class="chip">фотография</span> <span class="chip">блогинг</span>
+                    <span class="chip">стартапы</span> <span class="chip">ai</span>
+                </div>
+            </section>
         </div>
-        <div class="resume__item">
-          <h3 contenteditable="true">Frontend-разработчик</h3>
-          <p class="resume__date" contenteditable="true">2020 – 2022</p>
-          <p contenteditable="true">Веб-студия "Креатив"</p>
-        </div>
-      </section>
+    </div>
 
-      <section class="resume__section">
-        <h2>Образование</h2>
-        <div class="resume__item">
-          <h3 contenteditable="true">МГУ им. Ломоносова</h3>
-          <p contenteditable="true">Факультет вычислительной математики и кибернетики, 2020</p>
-        </div>
-      </section>
-
-      <section class="resume__section">
-        <h2>Навыки</h2>
-        <ul class="resume__skills">
-          <li contenteditable="true">HTML5, CSS3, JavaScript (ES6+)</li>
-          <li contenteditable="true">React, Vue.js</li>
-          <li contenteditable="true">Node.js, Express</li>
-          <li contenteditable="true">Git, Webpack, Vite</li>
-        </ul>
-      </section>
-
-      <button class="resume__download-btn" id="downloadBtn">Скачать PDF</button>
-    </main>
-
-    <script type="module" src="./js/main.js"></script>
-  </body>
+    <script src="js/main.js"></script>
+</body>
 </html>
