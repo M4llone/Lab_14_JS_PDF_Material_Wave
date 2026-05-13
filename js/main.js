@@ -1,5 +1,3 @@
-import '../css/style.css'
-
 // Сохранение данных в localStorage
 function saveToLocalStorage() {
   const editableElements = document.querySelectorAll('[contenteditable="true"]')
