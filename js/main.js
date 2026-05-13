@@ -4,8 +4,11 @@ import '../css/style.css'
 function saveToLocalStorage() {
   const editableElements = document.querySelectorAll('[contenteditable="true"]')
   const data = {}
-  editableElements.forEach((el, index) => {
-    data[`editable-${index}`] = el.innerHTML
+  editableElements.forEach((el) => {
+    const id = el.getAttribute('data-id')
+    if (id) {
+      data[id] = el.innerHTML
+    }
   })
   localStorage.setItem('resumeData', JSON.stringify(data))
 }
@@ -16,9 +19,10 @@ function loadFromLocalStorage() {
   if (saved) {
     const data = JSON.parse(saved)
     const editableElements = document.querySelectorAll('[contenteditable="true"]')
-    editableElements.forEach((el, index) => {
-      if (data[`editable-${index}`]) {
-        el.innerHTML = data[`editable-${index}`]
+    editableElements.forEach((el) => {
+      const id = el.getAttribute('data-id')
+      if (id && data[id]) {
+        el.innerHTML = data[id]
       }
     })
   }
@@ -42,7 +46,7 @@ function addEditAnimations() {
 // Material Wave (Ripple) эффект
 function createRipple(event, element) {
   const ripple = document.createElement('span')
-  ripple.classList.add('ripple-effect')
+  ripple.classList.add('wave')
 
   const rect = element.getBoundingClientRect()
   const size = Math.max(rect.width, rect.height)
@@ -61,68 +65,13 @@ function createRipple(event, element) {
 }
 
 function addRippleEffect() {
-  // Добавляем ripple ко всем элементам с contenteditable и кнопкам
-  const elements = document.querySelectorAll('[contenteditable="true"], .resume__download-btn')
+  const elements = document.querySelectorAll('.ripple')
   
   elements.forEach(el => {
-    el.classList.add('ripple')
     el.addEventListener('click', (e) => {
       createRipple(e, el)
     })
   })
-}
-
-// Скачивание PDF
-function downloadPDF() {
-  // Создаём копию резюме для печати
-  const resume = document.querySelector('.resume')
-  const clone = resume.cloneNode(true)
-
-  // Убираем contenteditable для печати
-  const editables = clone.querySelectorAll('[contenteditable="true"]')
-  editables.forEach(el => el.removeAttribute('contenteditable'))
-
-  // Убираем кнопку скачивания
-  const btn = clone.querySelector('.resume__download-btn')
-  if (btn) btn.remove()
-
-  // Создаём окно для печати
-  const printWindow = window.open('', '_blank')
-  printWindow.document.write(`
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="UTF-8" />
-        <title>Резюме</title>
-        <style>
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-          }
-          h1 { font-size: 2.5em; color: #2c3e50; text-align: center; }
-          h2 { color: #2c3e50; border-bottom: 1px solid #e0e0e0; padding-bottom: 5px; margin: 20px 0 10px; }
-          h3 { color: #34495e; }
-          .resume__title { text-align: center; color: #3498db; font-size: 1.3em; margin: 5px 0 15px; }
-          .resume__contacts { text-align: center; color: #555; margin-bottom: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-          .resume__item { margin-bottom: 15px; }
-          .resume__date { color: #7f8c8d; font-size: 0.9em; margin: 3px 0; }
-          .resume__skills { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; }
-          .resume__skills li { background: #3498db; color: #fff; padding: 5px 12px; border-radius: 15px; font-size: 0.9em; }
-          .resume__header { border-bottom: 2px solid #3498db; padding-bottom: 15px; margin-bottom: 20px; }
-        </style>
-      </head>
-      <body>
-        ${clone.outerHTML}
-        <script>
-          window.onload = () => { window.print(); }
-        </script>
-      </body>
-    </html>
-  `)
-  printWindow.document.close()
 }
 
 // Инициализация
@@ -132,8 +81,17 @@ function init() {
   addRippleEffect()
 
   // Обработчик кнопки скачивания
-  const downloadBtn = document.getElementById('downloadBtn')
-  downloadBtn.addEventListener('click', downloadPDF)
+  const downloadBtn = document.getElementById('download-btn')
+  console.log('Кнопка найдена:', downloadBtn) // Проверка
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', (e) => {
+      console.log('Клик по кнопке скачивания') // Проверка
+      e.stopPropagation() // Останавливаем всплытие
+      window.print()
+    })
+  } else {
+    console.log('Кнопка НЕ найдена!')
+  }
 }
 
 // Запуск после загрузки DOM
